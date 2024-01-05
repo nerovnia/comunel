@@ -1,5 +1,4 @@
-const { ipcRenderer } = require('electron');
-
+const { electron } = window;
 
 const dataToSend = {
   key1: 'value1',
@@ -9,7 +8,23 @@ const dataToSend = {
 
 
 
-document.getElementById('sendCompany').addEventListener('click', () => {
+
+const saveData = (company) => {
+  console.log(company);
+}
+
+
+document.getElementById('saveCompany').addEventListener('click', () => {
+  const company = {
+    companyName: document.getElementById('companyName').value,
+    companyEDRPOU: document.getElementById('companyEDRPOU').value,
+    companyAccount: document.getElementById('companyAccount').value,
+    companyPhone: document.getElementById('companyPhone').value,
+  }
+  //saveData(company);
+  console.log(company);
+
+  /*
   const companyName = document.getElementById('companyName').value;
   const companyEDRPOU = document.getElementById('companyEDRPOU').value;
   const companyAccount = document.getElementById('companyAccount').value;
@@ -20,8 +35,6 @@ document.getElementById('sendCompany').addEventListener('click', () => {
   ipcRenderer.send('companyPhone', companyPhone);
 
   // Send the object to the main process
-  ipcRenderer.send('object-to-server', dataToSend);
+  ipcRenderer.send('object-to-server', dataToSend);*/
 });
-
-
 
